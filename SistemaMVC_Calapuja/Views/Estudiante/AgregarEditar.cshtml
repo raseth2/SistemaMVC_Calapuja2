@@ -1,0 +1,110 @@
+﻿@model SistemaMVC_Calapuja.Models.Estudiante
+@{
+    ViewBag.Title = "AgregarEditar";
+}
+
+<h2>Agregar / Editar</h2>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/Estudiante/Index">Estudiante</a>
+        </li>
+        <li class="breadcrumb-item" active>
+
+            @(Model.estudiante_id > 0 ? Model.nombre : "Nuevo Registro")
+        </li>
+
+    </ol>
+
+</nav>
+
+@using (Html.BeginForm("Guardar", "Estudiante", FormMethod.Post, new { id = "frm-estudiante" , enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x => x.estudiante_id)
+    <div class="card">
+        <div class="card-header">
+            Informacion de Estudiante
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                @Html.Label("Id")
+                @Html.TextBoxFor(x => x.estudiante_id, new { @class = "form-control", disabled = true })
+
+            </div>
+            <div class="form-group">
+                @Html.Label("estudiante_codigo")
+                @Html.TextBoxFor(x => x.estudiante_codigo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.estudiante_codigo, null, new { @class = "text-danger" })
+
+            </div>
+            <div class="form-group">
+                @Html.Label("dni")
+                @Html.TextBoxFor(x => x.dni, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.dni, null, new { @class = "text-danger" })
+
+            </div>
+            <div class="form-group">
+                @Html.Label("apellido")
+                @Html.TextBoxFor(x => x.apellido, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.apellido, null, new { @class = "text-danger" })
+
+            </div>
+            <div class="form-group">
+                @Html.Label("Nombre")
+                @Html.TextBoxFor(x => x.nombre, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.nombre, null, new { @class = "text-danger" })
+
+            </div>
+            <div class="form-group">
+                @Html.Label("sexo")
+                @Html.TextBoxFor(x => x.sexo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.sexo, null, new { @class = "text-danger" })
+
+            </div>
+            <div class="form-group">
+                @Html.Label("email")
+                @Html.TextBoxFor(x => x.email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.email, null, new { @class = "text-danger" })
+
+            </div>
+            <div class="form-group">
+                @Html.Label("direccion")
+                @Html.TextBoxFor(x => x.direccion, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.direccion, null, new { @class = "text-danger" })
+
+            </div>
+            <div class="form-group">
+                @Html.Label("celular")
+                @Html.TextBoxFor(x => x.celular, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.celular, null, new { @class = "text-danger" })
+
+            </div>
+            <div class="form-group">
+                @Html.Label("foto")
+
+                
+                <input type="file" name="file" />
+
+            </div>
+          
+            <div class="form-group">
+                @Html.Label("Estado")
+                <select name="estado" class="form-control">
+                    <option @(Model.estado == "" ? "Selected" : "") value="">-Seleccione-</option>
+                    <option @(Model.estado == "A" ? "Selected" : "") value="A">Activo</option>
+                    <option @(Model.estado == "I" ? "Selected" : "") value="I">Inactivo</option>
+                </select>
+
+            </div>
+        </div>
+
+    </div>
+    <br />
+    <div class="text-right">
+        <button type="submit" class="btn btn-primary">Grabar</button>
+        <a href="~/Estudiante" class="btn btn-danger">Cancelar</a>
+
+    </div>
+
+}

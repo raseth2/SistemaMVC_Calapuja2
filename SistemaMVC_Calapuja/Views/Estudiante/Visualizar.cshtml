@@ -1,0 +1,51 @@
+﻿@model SistemaMVC_Calapuja.Models.Estudiante
+@{
+    ViewBag.Title = "Visualizar";
+}
+
+<h2>Visualizar</h2>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/Estudiante/Index">Estudiante</a>
+        </li>
+        <li class="breadcrumb-item" active>@Model.nombre</li>
+
+    </ol>
+
+</nav>
+<div class="card">
+    <div class="card-header">
+        Informacion detallada del estudiante
+
+    </div>
+    <div class="card-body">
+        <dl class="dl-horizontal">
+            <dt>Id</dt>
+            <dd>@Model.estudiante_id</dd>
+            <dt>estudiante_codigo</dt>
+            <dd>@Model.estudiante_codigo</dd>
+            <dt>dni</dt>
+            <dd>@Model.dni</dd>
+            <dt>apellido</dt>
+            <dd>@Model.apellido</dd>
+            <dt>nombre</dt>
+            <dd>@Model.nombre</dd>
+            <dt>sexo</dt>
+            <dd>@Model.sexo</dd>
+            <dt>email</dt>
+            <dd>@Model.email</dd>
+            <dt>direccion</dt>
+            <dd>@Model.direccion</dd>
+            <dt>celular</dt>
+            <dd>@Model.celular</dd>
+            <dt>foto</dt>
+            <dd><img src="~/Archivos/@Model.foto "  width="150px" height="150"/></dd>
+            <dt>Estado</dt>
+            <dd>@(Model.estado == "A" ? "Activo" : "Inactivo")</dd>
+
+        </dl>
+
+    </div>
+
+</div>

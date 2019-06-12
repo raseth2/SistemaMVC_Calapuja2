@@ -1,0 +1,55 @@
+﻿@model List<SistemaMVC_Calapuja.Models.Estudiante>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="card" text-center>Gestion de Estudiante</h2>
+<br />
+<div class="text-right">
+    <a href="~/Estudiante/AgregarEditar/" class="btn btn-secondary text-right">
+        Nuevo registro
+    </a>
+</div>
+<br />
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th style="width:50px">ID  </th>
+            <th style="width:100px">estudiante_codigo  </th>
+            <th style="width:70px">dni  </th>
+            <th style="width:80px">apellido  </th>
+            <th style="width:200px">nombre  </th>
+            <th style="width:50px">sexo  </th>
+            <th style="width:100px">email  </th>
+            <th style="width:70px">direccion  </th>
+            <th style="width:80px">celular  </th>
+            <th style="width:200px">foto  </th>
+            <th style="width:200px">estado  </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <th>@(s.estudiante_id)</th>
+                <th>@(s.estudiante_codigo)</th>
+                <th>@(s.dni)</th>
+                <th>@(s.apellido)</th>
+                <th>@(s.nombre)</th>
+                <th>@(s.sexo)</th>
+                <th>@(s.email)</th>
+                <th>@(s.direccion)</th>
+                <th>@(s.celular)</th>
+                <th><img src="~/Archivos/@s.foto" width="50px" height="50"/></th>
+                <th>@(s.estado == "A" ? "Activo" : "Inactivo")</th>
+                <th style="align-content:center">
+                    <a href="~/Estudiante/Visualizar/@s.estudiante_id" class="btn btn-xs btn-warning">Visualizar</a>
+                    <a href="~/Estudiante/AgregarEditar/@s.estudiante_id" class="btn btn-xs btn-primary">Modificar</a>
+                    <a href="~/Estudiante/Eliminar/@s.estudiante_id" class="btn btn-xs btn-danger" onclick="return confirm('¿Esta Seguro de Eliminar.........?');">Eliminar</a>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>
